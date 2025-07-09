@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Library - Your Gateway to Knowledge</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Background Music Players -->
+    <audio id="classicMusic" loop preload="auto">
+        <source src="https://www.soundjay.com/misc/sounds/classical-music.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="mysteryMusic" loop preload="auto">
+        <source src="https://www.soundjay.com/misc/sounds/mystery-music.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="romanceMusic" loop preload="auto">
+        <source src="https://www.soundjay.com/misc/sounds/romantic-music.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="scifiMusic" loop preload="auto">
+        <source src="https://www.soundjay.com/misc/sounds/scifi-music.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <i class="fas fa-book-open"></i>
+                <span>DigitalLibrary</span>
+            </div>
+            
+            <div class="nav-menu" id="navMenu">
+                <a href="#home" class="nav-link active">
+                    <i class="fas fa-home"></i>
+                    <span>Home</span>
+                </a>
+                <a href="#browse" class="nav-link">
+                    <i class="fas fa-search"></i>
+                    <span>Browse</span>
+                </a>
+                <a href="#upload" class="nav-link">
+                    <i class="fas fa-upload"></i>
+                    <span>Upload</span>
+                </a>
+                <a href="#profile" class="nav-link" id="profileLink">
+                    <i class="fas fa-user"></i>
+                    <span>Profile</span>
+                </a>
+            </div>
+
+            <div class="nav-controls">
+                <button class="theme-toggle" id="themeToggle">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <button class="music-toggle" id="musicToggle">
+                    <i class="fas fa-music"></i>
+                </button>
+                <button class="auth-btn" id="authBtn">
+                    <i class="fas fa-sign-in-alt"></i>
+                    <span>Login</span>
+                </button>
+                <button class="mobile-menu-toggle" id="mobileMenuToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-background">
+            <div class="floating-books">
+                <div class="floating-book"></div>
+                <div class="floating-book"></div>
+                <div class="floating-book"></div>
+                <div class="floating-book"></div>
+                <div class="floating-book"></div>
+            </div>
+        </div>
+        <div class="hero-content">
+            <h1 class="hero-title">
+                <span class="gradient-text">Discover</span> Your Next
+                <br>Great <span class="gradient-text">Adventure</span>
+            </h1>
+            <p class="hero-subtitle">
+                Immerse yourself in a world of knowledge with our vast collection of digital books. 
+                Read, explore, and expand your horizons with thousands of titles at your fingertips.
+            </p>
+            <div class="hero-stats">
+                <div class="stat-item">
+                    <div class="stat-number" id="totalBooks">50,000+</div>
+                    <div class="stat-label">Books Available</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">25+</div>
+                    <div class="stat-label">Languages</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">100+</div>
+                    <div class="stat-label">Genres</div>
+                </div>
+            </div>
+            <div class="hero-actions">
+                <button class="cta-button primary" onclick="scrollToSection('browse')">
+                    <i class="fas fa-book-reader"></i>
+                    Start Reading
+                </button>
+                <button class="cta-button secondary" onclick="openAuthModal()">
+                    <i class="fas fa-user-plus"></i>
+                    Join Library
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Search & Filter Section -->
+    <section class="search-section" id="browse">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Explore Our Collection</h2>
+                <p class="section-subtitle">Find your perfect book from our extensive digital library</p>
+            </div>
+            
+            <div class="search-container">
+                <div class="search-box">
+                    <i class="fas fa-search search-icon"></i>
+                    <input type="text" id="searchInput" placeholder="Search by title, author, or keyword...">
+                    <button class="voice-search" id="voiceSearch">
+                        <i class="fas fa-microphone"></i>
+                    </button>
+                </div>
+                
+                <div class="filter-controls">
+                    <div class="filter-group">
+                        <label for="genreFilter">Genre</label>
+                        <select id="genreFilter" class="filter-select">
+                            <option value="">All Genres</option>
+                            <option value="fiction">Fiction</option>
+                            <option value="mystery">Mystery</option>
+                            <option value="romance">Romance</option>
+                            <option value="science-fiction">Science Fiction</option>
+                            <option value="fantasy">Fantasy</option>
+                            <option value="biography">Biography</option>
+                            <option value="history">History</option>
+                            <option value="science">Science</option>
+                            <option value="philosophy">Philosophy</option>
+                            <option value="poetry">Poetry</option>
+                        </select>
+                    </div>
+                    
+                    <div class="filter-group">
+                        <label for="languageFilter">Language</label>
+                        <select id="languageFilter" class="filter-select">
+                            <option value="">All Languages</option>
+                            <option value="en">English</option>
+                            <option value="es">Spanish</option>
+                            <option value="fr">French</option>
+                            <option value="de">German</option>
+                            <option value="it">Italian</option>
+                            <option value="pt">Portuguese</option>
+                            <option value="ru">Russian</option>
+                            <option value="zh">Chinese</option>
+                            <option value="ja">Japanese</option>
+                            <option value="ar">Arabic</option>
+                        </select>
+                    </div>
+                    
+                    <div class="view-toggle">
+                        <button class="view-btn active" data-view="grid">
+                            <i class="fas fa-th"></i>
+                        </button>
+                        <button class="view-btn" data-view="list">
+                            <i class="fas fa-list"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Books Grid -->
+    <section class="books-section">
+        <div class="container">
+            <div class="loading-spinner" id="loadingSpinner">
+                <div class="spinner"></div>
+                <p>Loading amazing books...</p>
+            </div>
+            
+            <div class="books-grid" id="booksGrid">
+                <!-- Books will be dynamically loaded here -->
+            </div>
+            
+            <div class="load-more-container">
+                <button class="load-more-btn" id="loadMoreBtn">
+                    <i class="fas fa-plus"></i>
+                    Load More Books
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Upload Section -->
+    <section class="upload-section" id="upload">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Share Knowledge</h2>
+                <p class="section-subtitle">Upload your books and contribute to our growing library</p>
+            </div>
+            
+            <div class="upload-container">
+                <form class="upload-form" id="uploadForm">
+                    <div class="upload-area" id="uploadArea">
+                        <div class="upload-icon">
+                            <i class="fas fa-cloud-upload-alt"></i>
+                        </div>
+                        <h3>Drag & Drop your PDF here</h3>
+                        <p>or click to browse files</p>
+                        <input type="file" id="fileInput" accept=".pdf" hidden>
+                        <div class="upload-progress" id="uploadProgress">
+                            <div class="progress-bar"></div>
+                            <span class="progress-text">0%</span>
+                        </div>
+                    </div>
+                    
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="bookTitle">Book Title *</label>
+                            <input type="text" id="bookTitle" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="bookAuthor">Author *</label>
+                            <input type="text" id="bookAuthor" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="bookGenre">Genre *</label>
+                            <select id="bookGenre" required>
+                                <option value="">Select Genre</option>
+                                <option value="fiction">Fiction</option>
+                                <option value="mystery">Mystery</option>
+                                <option value="romance">Romance</option>
+                                <option value="science-fiction">Science Fiction</option>
+                                <option value="fantasy">Fantasy</option>
+                                <option value="biography">Biography</option>
+                                <option value="history">History</option>
+                                <option value="science">Science</option>
+                                <option value="philosophy">Philosophy</option>
+                                <option value="poetry">Poetry</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="bookLanguage">Language *</label>
+                            <select id="bookLanguage" required>
+                                <option value="">Select Language</option>
+                                <option value="en">English</option>
+                                <option value="es">Spanish</option>
+                                <option value="fr">French</option>
+                                <option value="de">German</option>
+                                <option value="it">Italian</option>
+                                <option value="pt">Portuguese</option>
+                                <option value="ru">Russian</option>
+                                <option value="zh">Chinese</option>
+                                <option value="ja">Japanese</option>
+                                <option value="ar">Arabic</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group full-width">
+                            <label for="bookDescription">Description</label>
+                            <textarea id="bookDescription" rows="4" placeholder="Brief description of the book..."></textarea>
+                        </div>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn">
+                        <i class="fas fa-upload"></i>
+                        Upload Book
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modals -->
+    <!-- Auth Modal -->
+    <div class="modal-overlay" id="authModal">
+        <div class="modal auth-modal">
+            <div class="modal-header">
+                <h2 id="authTitle">Welcome Back</h2>
+                <button class="close-btn" onclick="closeModal('authModal')">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            
+            <div class="modal-body">
+                <div class="auth-tabs">
+                    <button class="auth-tab active" data-tab="login">Login</button>
+                    <button class="auth-tab" data-tab="signup">Sign Up</button>
+                </div>
+                
+                <div class="auth-content">
+                    <div class="social-auth">
+                        <button class="social-btn google-btn">
+                            <i class="fab fa-google"></i>
+                            Continue with Google
+                        </button>
+                    </div>
+                    
+                    <div class="divider">
+                        <span>or</span>
+                    </div>
+                    
+                    <form class="auth-form" id="authForm">
+                        <div class="form-group">
+                            <label for="authEmail">Email</label>
+                            <input type="email" id="authEmail" required>
+                        </div>
+                        
+                        <div class="form-group" id="phoneGroup" style="display: none;">
+                            <label for="authPhone">Phone Number</label>
+                            <input type="tel" id="authPhone">
+                        </div>
+                        
+                        <div class="auth-options">
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="usePhone">
+                                <span class="checkmark"></span>
+                                Use phone number instead
+                            </label>
+                        </div>
+                        
+                        <button type="submit" class="auth-submit-btn">
+                            <span id="authSubmitText">Send OTP</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </button>
+                    </form>
+                    
+                    <div class="otp-section" id="otpSection" style="display: none;">
+                        <p>Enter the 6-digit code sent to your email/phone</p>
+                        <div class="otp-inputs">
+                            <input type="text" class="otp-input" maxlength="1">
+                            <input type="text" class="otp-input" maxlength="1">
+                            <input type="text" class="otp-input" maxlength="1">
+                            <input type="text" class="otp-input" maxlength="1">
+                            <input type="text" class="otp-input" maxlength="1">
+                            <input type="text" class="otp-input" maxlength="1">
+                        </div>
+                        <button class="verify-btn" id="verifyOtpBtn">Verify & Continue</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Book Reader Modal -->
+    <div class="modal-overlay" id="readerModal">
+        <div class="modal reader-modal">
+            <div class="reader-header">
+                <div class="reader-info">
+                    <h3 id="readerTitle">Book Title</h3>
+                    <p id="readerAuthor">Author Name</p>
+                </div>
+                <div class="reader-controls">
+                    <button class="reader-btn" id="fullscreenBtn">
+                        <i class="fas fa-expand"></i>
+                    </button>
+                    <button class="reader-btn" id="downloadBtn">
+                        <i class="fas fa-download"></i>
+                    </button>
+                    <button class="close-btn" onclick="closeModal('readerModal')">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <div class="reader-body">
+                <iframe id="pdfViewer" src="" frameborder="0"></iframe>
+                <div class="reader-overlay" id="readerOverlay">
+                    <div class="premium-message">
+                        <i class="fas fa-lock"></i>
+                        <h3>Premium Content</h3>
+                        <p>Upgrade to premium to access full reading experience</p>
+                        <button class="upgrade-btn" onclick="openPaymentModal()">
+                            <i class="fas fa-crown"></i>
+                            Upgrade Now
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Payment Modal -->
+    <div class="modal-overlay" id="paymentModal">
+        <div class="modal payment-modal">
+            <div class="modal-header">
+                <h2>Choose Your Plan</h2>
+                <button class="close-btn" onclick="closeModal('paymentModal')">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            
+            <div class="modal-body">
+                <div class="pricing-cards">
+                    <div class="pricing-card">
+                        <div class="card-header">
+                            <h3>Single Book</h3>
+                            <div class="price">$2.99</div>
+                        </div>
+                        <ul class="features">
+                            <li><i class="fas fa-check"></i> Download this book</li>
+                            <li><i class="fas fa-check"></i> Offline reading</li>
+                            <li><i class="fas fa-check"></i> No time limit</li>
+                        </ul>
+                        <button class="select-plan-btn" data-plan="single">
+                            Select Plan
+                        </button>
+                    </div>
+                    
+                    <div class="pricing-card featured">
+                        <div class="card-header">
+                            <h3>Premium Monthly</h3>
+                            <div class="price">$9.99<span>/month</span></div>
+                        </div>
+                        <ul class="features">
+                            <li><i class="fas fa-check"></i> Unlimited downloads</li>
+                            <li><i class="fas fa-check"></i> All books access</li>
+                            <li><i class="fas fa-check"></i> Offline reading</li>
+                            <li><i class="fas fa-check"></i> Priority support</li>
+                        </ul>
+                        <button class="select-plan-btn" data-plan="premium">
+                            Select Plan
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notifications -->
+    <div class="toast-container" id="toastContainer"></div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-brand">
+                        <i class="fas fa-book-open"></i>
+                        <span>DigitalLibrary</span>
+                    </div>
+                    <p>Your gateway to unlimited knowledge and endless adventures through books.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Library</h4>
+                    <ul>
+                        <li><a href="#browse">Browse Books</a></li>
+                        <li><a href="#upload">Upload Book</a></li>
+                        <li><a href="#">New Releases</a></li>
+                        <li><a href="#">Popular Books</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Account</h4>
+                    <ul>
+                        <li><a href="#" onclick="openAuthModal()">Sign In</a></li>
+                        <li><a href="#">My Library</a></li>
+                        <li><a href="#">Reading History</a></li>
+                        <li><a href="#">Bookmarks</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 DigitalLibrary. All rights reserved.</p>
+                <p>Made with <i class="fas fa-heart"></i> for book lovers worldwide</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
